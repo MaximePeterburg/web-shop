@@ -1,7 +1,7 @@
-import WebShop from "./components/WebShop/WebShop";
+import WebShop from './components/WebShop/WebShop';
 const App = () => {
   return (
-    <div className="App">
+    <div className='App'>
       <WebShop />
     </div>
   );

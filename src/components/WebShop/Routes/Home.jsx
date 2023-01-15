@@ -1,7 +1,6 @@
-import React from 'react';
-import Directory from './Directory/Directory';
-
-function WebShop() {
+import { Outlet } from 'react-router-dom';
+import Directory from '../Directory/Directory';
+function Home() {
   const categories = [
     {
       id: 1,
@@ -30,10 +29,11 @@ function WebShop() {
     }
   ];
   return (
-    <div>
+    <div className='Home'>
+      <Outlet />
       <Directory categories={categories} />
     </div>
   );
 }
 
-export default WebShop;
+export default Home;
