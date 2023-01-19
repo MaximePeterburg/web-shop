@@ -1,4 +1,3 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import {
   createUserDocumentFromAuth,
@@ -46,9 +45,7 @@ function SignInForm() {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
   };
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocumentFromAuth(user);
-    const userDocRef = await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
   return (
     <div className='SignInForm-container'>
