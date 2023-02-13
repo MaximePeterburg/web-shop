@@ -9,7 +9,7 @@ import {
   signInWithRedirect,
   signOut
 } from 'firebase/auth';
-import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getFirestore, setDoc, writeBatch } from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: 'AIzaSyAD9WUUgDGnPeUxBN29vl3NIYqxAnD4AJ8',
   authDomain: 'web-shop-db-e0a89.firebaseapp.com',
@@ -31,6 +31,10 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+};
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   const userDocRef = doc(db, 'users', userAuth.uid);

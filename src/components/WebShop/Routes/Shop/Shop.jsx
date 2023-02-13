@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ProductsContext } from '../../contexts/Products.context';
 import ProductCard from '../../ProductCard/ProductCard';
-import SHOP_DATA from '../../ShopData.json';
+import SHOP_DATA from '../../ShopData.js';
 import './Shop.scss';
 
 function Shop() {
