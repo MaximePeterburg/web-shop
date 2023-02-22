@@ -5,7 +5,7 @@ import {
 } from '../../../utils/Firebase/Firebase.utils';
 import Button from '../Button/Button';
 import FormInput from '../FormInput/FormInput';
-import './SignUpForm.scss';
+import { SignUpFormContainer } from './SignUpForm.styles';
 
 const defaultFormFields = {
   displayName: '',
@@ -13,7 +13,6 @@ const defaultFormFields = {
   password: '',
   confirmPassword: ''
 };
-
 function SignUpForm() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
@@ -21,7 +20,6 @@ function SignUpForm() {
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -40,14 +38,12 @@ function SignUpForm() {
       }
     }
   };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
-
   return (
-    <div className='SignUpForm-container'>
+    <SignUpFormContainer>
       <h2>Don't have an account? </h2>
       <span>Sign UP with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -59,9 +55,14 @@ function SignUpForm() {
           label='Display Name'
           value={displayName}
         />
-
-        <FormInput type='email' onChange={handleChange} required label='Email' name='email' value={email} />
-
+        <FormInput
+          type='email'
+          onChange={handleChange}
+          required
+          label='Email'
+          name='email'
+          value={email}
+        />
         <FormInput
           type='password'
           label='Password'
@@ -70,7 +71,6 @@ function SignUpForm() {
           name='password'
           value={password}
         />
-
         <FormInput
           type='password'
           onChange={handleChange}
@@ -81,8 +81,7 @@ function SignUpForm() {
         />
         <Button type='submit'>Sign Up</Button>
       </form>
-    </div>
+    </SignUpFormContainer>
   );
 }
-
 export default SignUpForm;

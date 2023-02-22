@@ -9,11 +9,12 @@ export const CategoriesProvider = ({ children }) => {
   useEffect(() => {
     const getCategoriesMap = async () => {
       const categoryMap = await getCategoriesAndDocuments();
-      console.log(categoryMap);
       setCategoriesMap(categoryMap);
     };
     getCategoriesMap();
   }, []);
   const value = { categoriesMap };
-  return <CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>;
+  return (
+    <CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>
+  );
 };
