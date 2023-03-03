@@ -25,7 +25,7 @@ function CheckoutItem({ cartItem }) {
       <BaseSpan>{name}</BaseSpan>
       <Quantity>
         <Arrow onClick={removeItemHandler}>&#10094;</Arrow>
-        <Quantity>{quantity}</Quantity>
+        <Value>{quantity}</Value>
         <Arrow onClick={addItemHandler}>&#10095;</Arrow>
       </Quantity>
       <BaseSpan>{price}</BaseSpan>

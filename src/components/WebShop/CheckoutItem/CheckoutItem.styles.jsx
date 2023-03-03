@@ -25,7 +25,6 @@ export const BaseSpan = styled.span`
 
 export const Quantity = styled(BaseSpan)`
   display: flex;
-  
 `;
 
 export const Arrow = styled.div`

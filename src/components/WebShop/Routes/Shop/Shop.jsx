@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
+import { CategoriesProvider } from '../../contexts/Categories.context';
 import CategoriesPreview from '../CategoriesPreview/CategoriesPreview';
 import Category from '../Category/Category';
-// import './Shop.scss';
 
 function Shop() {
   return (
