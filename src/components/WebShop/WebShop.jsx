@@ -22,7 +22,8 @@ const WebShop = () => {
       dispatch(setCurrentUser(user));
     });
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path='/' element={<Navigation />}>

@@ -1,9 +1,11 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
+import { useSelector } from 'react-redux';
+import { selectCategoriesMap } from '../../../../store/categories/category.selector';
 import CategoryPreview from '../../CategoryPreview/CategoryPreview';
-import { CategoriesContext } from '../../contexts/Categories.context';
 
-function CategoriesPreview() {
-  const { categoriesMap } = useContext(CategoriesContext);
+const CategoriesPreview = () => {
+  const categoriesMap = useSelector(selectCategoriesMap);
+
   return (
     <Fragment>
       {Object.keys(categoriesMap).map((title) => {
@@ -12,6 +14,6 @@ function CategoriesPreview() {
       })}
     </Fragment>
   );
-}
+};
 
 export default CategoriesPreview;
