@@ -8,8 +8,6 @@ import {
   signOutUser
 } from '../../utils/Firebase/Firebase.utils';
 import {
-  emailSignInStart,
-  googleSignInStart,
   signInFailed,
   signInSuccess,
   signOutFailed,
