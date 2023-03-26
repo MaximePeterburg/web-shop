@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { setCurrentUser } from '../../store/user/user.action';
-import {
-  createUserDocumentFromAuth,
-  onAuthStateChangedListener
-} from '../../utils/Firebase/Firebase.utils';
+import { checkUserSession } from '../../store/user/user.action';
 import Authentication from './Routes/Authentication/Authentication';
 import Checkout from './Routes/Checkout/Checkout';
 import Home from './Routes/Home';
@@ -15,14 +11,8 @@ import Shop from './Routes/Shop/Shop';
 const WebShop = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe;
-  }, [dispatch]);
+    dispatch(checkUserSession());
+  }, []);
 
   return (
     <Routes>
