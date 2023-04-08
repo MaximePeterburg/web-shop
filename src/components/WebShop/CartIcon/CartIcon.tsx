@@ -1,8 +1,8 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as ShoppingIcon } from '../../../assets/ShoppingBag.svg';
 import { setIsCartOpen } from '../../../store/cart/cart.action';
 import { selectCartCount, selectIsCartOpen } from '../../../store/cart/cart.selector';
-import { CartIconContainer, ItemCount, ShoppingIcon } from './CartIcon.styles';
+import { CartIconContainer, ItemCount } from './CartIcon.styles';
 
 function CartIcon() {
   const dispatch = useDispatch();

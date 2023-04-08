@@ -1,15 +1,19 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
-import React, { useState } from 'react';
+import { StripeCardElement } from '@stripe/stripe-js';
+import React, { FormEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartTotal } from '../../../store/cart/cart.selector';
 import { selectCurrentUser } from '../../../store/user/user.selector';
-import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
+import { BUTTON_TYPE_CLASSES } from '../Button/Button';
 import {
   FormContainer,
   PaymentButton,
   PaymentFormContainer
 } from './payment-form.styles';
+
+const ifValidCardElement = (card: StripeCardElement | null): card is StripeCardElement =>
+  card !== null;
 
 function PaymentForm() {
   const stripe = useStripe();
@@ -17,7 +21,7 @@ function PaymentForm() {
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
-  const paymentHandler = async (e) => {
+  const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!stripe || !elements) {
       return;
@@ -34,9 +38,13 @@ function PaymentForm() {
       paymentIntent: { client_secret }
     } = response;
     console.log(client_secret);
+    const cardDetails = elements.getElement(CardElement);
+
+    if (!ifValidCardElement(cardDetails)) return;
+
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: cardDetails,
         billing_details: {
           name: currentUser ? currentUser.displayName : 'Guest'
         }

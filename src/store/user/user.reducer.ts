@@ -23,7 +23,7 @@ export const userReducer = (state = INITIAL_STATE, action: AnyAction): UserState
     return { ...state, currentUser: action.payload };
   }
   if (signOutSuccess.match(action)) {
-    return { state, currentUser: null };
+    return { ...state, currentUser: null };
   }
   if (
     signOutFailed.match(action) ||
