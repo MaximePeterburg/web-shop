@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-export type BackgroundImageProps = {
+
+type BackgroundImageProps = {
   imageUrl: string;
 };
+
 export const BackgroundImage = styled.div<BackgroundImageProps>`
   width: 100%;
   height: 100%;
@@ -9,6 +11,7 @@ export const BackgroundImage = styled.div<BackgroundImageProps>`
   background-position: center;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
+
 export const Body = styled.div`
   height: 90px;
   padding: 0 25px;
@@ -45,24 +48,29 @@ export const DirectoryItemContainer = styled.div`
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
+
+  &:first-child {
+    margin-right: 7.5px;
+  }
+
+  &:last-child {
+    margin-left: 7.5px;
+  }
+
   &:hover {
     cursor: pointer;
 
-    & ${BackgroundImage} {
+    ${BackgroundImage} {
       transform: scale(1.1);
       transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
 
-    & ${Body} {
+    ${Body} {
       opacity: 0.9;
     }
+  }
 
-    &:first-child {
-      margin-right: 7.5px;
-    }
-
-    &:last-child {
-      margin-left: 7.5px;
-    }
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 `;

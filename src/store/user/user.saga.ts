@@ -63,7 +63,6 @@ export function* signInWithEmail({ payload: { email, password } }: EmailSignInSt
     yield* put(signInFailed(error as Error));
   }
 }
-
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield* call(getCurrentUser);

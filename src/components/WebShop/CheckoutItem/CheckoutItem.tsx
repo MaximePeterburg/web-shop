@@ -26,7 +26,7 @@ const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
   const cartItems = useSelector(selectCartItems);
   const { name, imageUrl, price, quantity } = cartItem;
   const addItemHandler = () => dispatch(addItemToCart(cartItems, cartItem));
-  const removeItemHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
+const removeItemHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
   const clearItemHandler = () => dispatch(clearItemFromCart(cartItems, cartItem));
   return (
     <CheckoutItemContainer>
